@@ -1,0 +1,265 @@
+{
+  "brand": {
+    "name": "IESTM",
+    "email": "info@iestm.ir",
+    "phone": "+98 912 345 6789",
+    "address": "Tehran, Valiasr St., No. 123",
+    "address_fa": "تهران، خیابان ولیعصر، پلاک ۱۲۳",
+    "social": {
+      "instagram": "https://instagram.com/iestm",
+      "telegram": "https://t.me/iestm",
+      "github": "https://github.com/iestmgit",
+      "youtube": "https://youtube.com/@iestm"
+    }
+  },
+  "menu": {
+    "en": [
+      { "title": "Home", "link": "/" },
+      { "title": "About", "link": "/about.html" },
+      { "title": "Projects", "link": "/projects.html" },
+      { "title": "Blog", "link": "/blog.html" },
+      { "title": "Music", "link": "/music.html" },
+      { "title": "Contact", "link": "/contact.html" }
+    ],
+    "fa": [
+      { "title": "خانه", "link": "/" },
+      { "title": "درباره ما", "link": "/about.html" },
+      { "title": "پروژه‌ها", "link": "/projects.html" },
+      { "title": "وبلاگ", "link": "/blog.html" },
+      { "title": "موسیقی", "link": "/music.html" },
+      { "title": "تماس", "link": "/contact.html" }
+    ]
+  },
+  "hero": {
+    "en": {
+      "title": "From Idea to Execution in the Heart of Tehran",
+      "subtitle": "At IESTM, we turn your ideas into real products using cutting-edge technologies. Expertise in Python, 3D Web, and software design.",
+      "cta": "View Projects"
+    },
+    "fa": {
+      "title": "از ایده تا اجرا در قلب تهران",
+      "subtitle": "ما در ایستم، ایده‌های شما را با تکنولوژی‌های روز به محصولات واقعی تبدیل می‌کنیم. تخصص در پایتون، وب‌سه‌بعدی و طراحی نرم‌افزار.",
+      "cta": "مشاهده پروژه‌ها"
+    }
+  },
+  "projects": {
+    "en": [
+      {
+        "id": 1,
+        "title": "IESTM OS",
+        "description": "Windows desktop environment with Python and PyQt - modern and lightweight",
+        "tech": "Python / PyQt",
+        "demo": "#",
+        "github": "https://github.com/iestmgit/iestm-os"
+      },
+      {
+        "id": 2,
+        "title": "3D Tic-Tac-Toe",
+        "description": "Classic tic-tac-toe game with 3D graphics and smooth animations",
+        "tech": "Three.js / JavaScript",
+        "demo": "#",
+        "github": "https://github.com/iestmgit/3d-tic-tac-toe"
+      },
+      {
+        "id": 3,
+        "title": "IESTM Notebook",
+        "description": "Online notebook with automatic browser storage",
+        "tech": "HTML5 / LocalStorage",
+        "demo": "#",
+        "github": "https://github.com/iestmgit/notebook"
+      },
+      {
+        "id": 4,
+        "title": "Solar System",
+        "description": "Complete solar system simulation with orbiting planets",
+        "tech": "Three.js / JavaScript",
+        "demo": "#",
+        "github": "https://github.com/iestmgit/solar-system"
+      },
+      {
+        "id": 5,
+        "title": "Hypercube",
+        "description": "Visual representation of a tesseract (4D) with rotation effects",
+        "tech": "Three.js / WebGL",
+        "demo": "#",
+        "github": "https://github.com/iestmgit/hypercube"
+      },
+      {
+        "id": 6,
+        "title": "Tehran City",
+        "description": "3D driving game through the streets of Tehran",
+        "tech": "Three.js / Physics Engine",
+        "demo": "#",
+        "github": "https://github.com/iestmgit/tehran-city"
+      }
+    ],
+    "fa": [
+      {
+        "id": 1,
+        "title": "IESTM OS",
+        "description": "محیط دسکتاپ ویندوزی با پایتون و PyQt - تجربه‌ای مدرن و سبک",
+        "tech": "Python / PyQt",
+        "demo": "#",
+        "github": "https://github.com/iestmgit/iestm-os"
+      },
+      {
+        "id": 2,
+        "title": "بازی سه‌بعدی دوز",
+        "description": "بازی کلاسیک دوز با گرافیک سه‌بعدی و انیمیشن‌های روان",
+        "tech": "Three.js / JavaScript",
+        "demo": "#",
+        "github": "https://github.com/iestmgit/3d-tic-tac-toe"
+      },
+      {
+        "id": 3,
+        "title": "IESTM Notebook",
+        "description": "دفترچه یادداشت آنلاین با ذخیره‌سازی خودکار در مرورگر",
+        "tech": "HTML5 / LocalStorage",
+        "demo": "#",
+        "github": "https://github.com/iestmgit/notebook"
+      },
+      {
+        "id": 4,
+        "title": "منظومه شمسی",
+        "description": "شبیه‌سازی کامل منظومه شمسی با حرکت سیاره‌ها در مدار",
+        "tech": "Three.js / JavaScript",
+        "demo": "#",
+        "github": "https://github.com/iestmgit/solar-system"
+      },
+      {
+        "id": 5,
+        "title": "ابر مکعب (Hypercube)",
+        "description": "نمایش بصری تسراکت (بعد چهارم) با افکت‌های چرخشی",
+        "tech": "Three.js / WebGL",
+        "demo": "#",
+        "github": "https://github.com/iestmgit/hypercube"
+      },
+      {
+        "id": 6,
+        "title": "تهران سیتی",
+        "description": "بازی رانندگی سه‌بعدی در خیابان‌های شهر تهران",
+        "tech": "Three.js / Physics Engine",
+        "demo": "#",
+        "github": "https://github.com/iestmgit/tehran-city"
+      }
+    ]
+  },
+  "about": {
+    "en": {
+      "title": "About IESTM",
+      "description": "IESTM is an independent software brand founded by Radmehr Asghari. We combine art and technology to turn ideas into real, practical products.",
+      "mission": "Our mission is to build software that is not only functional but also beautiful and inspiring. We believe in the power of technology to change the world.",
+      "team": [
+        {
+          "name": "Radmehr Asghari",
+          "role": "Founder & CTO",
+          "bio": "Senior developer with over 6 years of experience in Python, Web, and 3D graphics."
+        }
+      ]
+    },
+    "fa": {
+      "title": "درباره ایستم",
+      "description": "ایستم (IESTM) یک برند نرم‌افزاری مستقل است که توسط رادمهر اصغری بنیان‌گذاری شده. ما با ترکیب هنر و تکنولوژی، ایده‌ها را به محصولات واقعی و کاربردی تبدیل می‌کنیم.",
+      "mission": "رسالت ما، ساخت نرم‌افزارهایی است که نه تنها کارآمد باشند، بلکه زیبا و الهام‌بخش نیز باشند. ما به قدرت تکنولوژی برای تغییر جهان اعتقاد داریم.",
+      "team": [
+        {
+          "name": "رادمهر اصغری",
+          "role": "بنیان‌گذار و مدیر فنی",
+          "bio": "توسعه‌دهنده ارشد با بیش از ۶ سال تجربه در پایتون، وب و گرافیک سه‌بعدی."
+        }
+      ]
+    }
+  },
+  "blog": {
+    "en": [
+      {
+        "id": 1,
+        "title": "Introducing IESTM OS - A Modern Desktop with Python",
+        "date": "2025-01-05",
+        "summary": "In this article, get to know the IESTM desktop environment built with PyQt.",
+        "link": "#"
+      },
+      {
+        "id": 2,
+        "title": "3D Tic-Tac-Toe with Three.js",
+        "date": "2024-12-28",
+        "summary": "How we rebuilt the classic tic-tac-toe game with 3D graphics and smooth animations.",
+        "link": "#"
+      },
+      {
+        "id": 3,
+        "title": "Solar System Simulation in the Browser",
+        "date": "2024-12-15",
+        "summary": "Building a complete simulation of planets and their orbits using WebGL.",
+        "link": "#"
+      }
+    ],
+    "fa": [
+      {
+        "id": 1,
+        "title": "معرفی IESTM OS - یک دسکتاپ مدرن با پایتون",
+        "date": "۱۴۰۳/۱۰/۰۵",
+        "summary": "در این مقاله، با محیط دسکتاپ اختصاصی ایستم آشنا می‌شوید که با PyQt ساخته شده.",
+        "link": "#"
+      },
+      {
+        "id": 2,
+        "title": "سه‌بعدی‌سازی بازی دوز با Three.js",
+        "date": "۱۴۰۳/۰۹/۲۸",
+        "summary": "چگونه بازی کلاسیک دوز را با گرافیک سه‌بعدی و انیمیشن‌های روان بازسازی کردیم.",
+        "link": "#"
+      },
+      {
+        "id": 3,
+        "title": "شبیه‌سازی منظومه شمسی در مرورگر",
+        "date": "۱۴۰۳/۰۹/۱۵",
+        "summary": "ساخت یک شبیه‌سازی کامل از سیاره‌ها و مدارهای آنها با استفاده از WebGL.",
+        "link": "#"
+      }
+    ]
+  },
+  "music": {
+    "en": {
+      "title": "IESTM Official Music",
+      "description": "Listen with headphones. An audio experience from our brand.",
+      "tracks": [
+        { "id": 1, "title": "IESTM Main Theme", "artist": "IESTM Studio", "file": "assets/audio/1.mp3", "duration": "3:45" },
+        { "id": 2, "title": "Cyber Tehran", "artist": "IESTM Studio", "file": "assets/audio/2.mp3", "duration": "4:12" }
+      ]
+    },
+    "fa": {
+      "title": "موسیقی رسمی ایستم",
+      "description": "با هدفون گوش دهید. تجربه‌ای صوتی از برند ما",
+      "tracks": [
+        { "id": 1, "title": "تم اصلی ایستم", "artist": "IESTM Studio", "file": "assets/audio/1.mp3", "duration": "3:45" },
+        { "id": 2, "title": "سایبرنتیک تهران", "artist": "IESTM Studio", "file": "assets/audio/2.mp3", "duration": "4:12" }
+      ]
+    }
+  },
+  "footer": {
+    "en": {
+      "copyright": "2025 © All rights reserved for IESTM.",
+      "aboutShort": "Independent software brand focused on Python, 3D graphics, and interactive design."
+    },
+    "fa": {
+      "copyright": "۱۴۰۴ © تمامی حقوق برای ایستم (IESTM) محفوظ است.",
+      "aboutShort": "برند نرم‌افزاری مستقل با تمرکز بر پایتون، گرافیک سه‌بعدی و طراحی تعاملی."
+    }
+  },
+  "editor": {
+    "en": {
+      "title": "HTML Code Editor",
+      "description": "Write and test your HTML code live. Click Run to see the result.",
+      "runBtn": "▶ Run",
+      "clearBtn": "✕ Clear",
+      "placeholder": "<!-- Write your HTML code here -->\n<h1>Hello, World!</h1>\n<p>This is a test.</p>"
+    },
+    "fa": {
+      "title": "ویرایشگر کد HTML",
+      "description": "کد HTML خود را بنویسید و به صورت زنده تست کنید. برای مشاهده نتیجه، روی Run کلیک کنید.",
+      "runBtn": "▶ اجرا",
+      "clearBtn": "✕ پاک کردن",
+      "placeholder": "<!-- کد HTML خود را اینجا بنویسید -->\n<h1>سلام، دنیا!</h1>\n<p>این یک تست است.</p>"
+    }
+  }
+}
