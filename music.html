@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Music | IESTM</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body class="lang-fa">
+
+  <div id="header-placeholder"></div>
+
+  <section class="section" style="padding: 60px 0;">
+    <div class="container">
+      <div class="music-player-wrapper" id="musicApp">
+        <div class="music-header">
+          <h2 data-i18n="music.title">🎵 موسیقی رسمی ایستم</h2>
+          <p data-i18n="music.description">با هدفون گوش دهید. تجربه‌ای صوتی از برند ما</p>
+        </div>
+        <div class="track-list" id="trackList"></div>
+        <div class="now-playing-bar">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div>
+              <h4 id="currentTrackTitle">هیچ آهنگی انتخاب نشده</h4>
+              <span id="currentTrackArtist" style="color:var(--text-muted); font-size:0.8rem;">IESTM Studio</span>
+            </div>
+            <span id="currentTrackDuration" style="color:var(--text-muted);">0:00</span>
+          </div>
+          <div class="controls">
+            <button id="prevBtn" style="background:none;border:none;color:var(--text-primary);font-size:1.8rem;cursor:pointer;">⏮</button>
+            <button id="playBtn" style="background:none;border:none;color:var(--gold);font-size:2.4rem;cursor:pointer;">▶</button>
+            <button id="nextBtn" style="background:none;border:none;color:var(--text-primary);font-size:1.8rem;cursor:pointer;">⏭</button>
+          </div>
+          <div class="progress-bar" id="progressBar">
+            <div class="fill" id="progressFill"></div>
+          </div>
+          <div class="time-display">
+            <span id="currentTime">0:00</span>
+            <span id="totalTime">0:00</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer" id="footerContainer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><h3>IESTM</h3><p data-i18n="footer.aboutShort">برند نرم‌افزاری مستقل</p></div>
+        <div class="footer-links"><h4 data-i18n="footer.quickLinks">دسترسی سریع</h4><a href="/" data-i18n="menu.home">خانه</a><a href="about.html" data-i18n="menu.about">درباره ما</a><a href="projects.html" data-i18n="menu.projects">پروژه‌ها</a><a href="contact.html" data-i18n="menu.contact">تماس</a></div>
+        <div class="footer-social"><h4 data-i18n="footer.followUs">ما را دنبال کنید</h4><div class="social-icons"><a href="https://instagram.com/iestm" target="_blank">📸</a><a href="https://t.me/iestm" target="_blank">✈️</a><a href="https://github.com/iestmgit" target="_blank">🐙</a><a href="https://youtube.com/@iestm" target="_blank">▶️</a></div></div>
+      </div>
+      <div class="footer-bottom" data-i18n="footer.copyright">۱۴۰۴ © تمامی حقوق محفوظ است.</div>
+    </div>
+  </footer>
+
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/loader.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      await window.I18N.load();
+      window.I18N.applyLanguage(window.I18N.getLanguage());
+
+      try {
+        const res = await fetch('/website-data.json');
+        const data = await res.json();
+        const lang = window.I18N.getLanguage();
+        const music = data.music[lang] || data.music.en;
+        const tracks = music.tracks || [];
+
+        const trackList = document.getElementById('trackList');
+        const audio = new Audio();
+        let currentIndex = 0;
+        let isPlaying = false;
+
+        trackList.innerHTML = tracks.map((track, index) => `
+          <div class="track-item ${index === 0 ? 'active' : ''}" data-index="${index}">
+            <span class="track-number">${String(index + 1).padStart(2, '0')}</span>
+            <div class="track-info">
+              <h4>${track.title}</h4>
+              <span>${track.artist}</span>
+            </div>
+            <span class="track-duration">${track.duration}</span>
+          </div>
+        `).join('');
+
+        const trackItems = trackList.querySelectorAll('.track-item');
+        const playBtn = document.getElementById('playBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const progressFill = document.getElementById('progressFill');
+        const currentTime = document.getElementById('currentTime');
+        const totalTime = document.getElementById('totalTime');
+        const currentTrackTitle = document.getElementById('currentTrackTitle');
+        const currentTrackArtist = document.getElementById('currentTrackArtist');
+        const progressBar = document.getElementById('progressBar');
+
+        function loadTrack(index) {
+          if (!tracks.length) return;
+          currentIndex = index;
+          const track = tracks[index];
+          audio.src = track.file;
+          currentTrackTitle.textContent = track.title;
+          currentTrackArtist.textContent = track.artist;
+          trackItems.forEach((el, i) => {
+            el.classList.toggle('active', i === index);
+          });
+          if (isPlaying) { audio.play(); playBtn.textContent = '⏸'; }
+          else { playBtn.textContent = '▶'; }
+        }
+
+        function playPause() {
+          if (audio.paused) { audio.play(); playBtn.textContent = '⏸'; isPlaying = true; }
+          else { audio.pause(); playBtn.textContent = '▶'; isPlaying = false; }
+        }
+
+        function nextTrack() { if (tracks.length) loadTrack((currentIndex + 1) % tracks.length); if (isPlaying) audio.play(); }
+        function prevTrack() { if (tracks.length) loadTrack((currentIndex - 1 + tracks.length) % tracks.length); if (isPlaying) audio.play(); }
+
+        playBtn.addEventListener('click', playPause);
+        prevBtn.addEventListener('click', prevTrack);
+        nextBtn.addEventListener('click', nextTrack);
+
+        trackItems.forEach((item, index) => {
+          item.addEventListener('click', () => { loadTrack(index); isPlaying = true; audio.play(); playBtn.textContent = '⏸'; });
+        });
+
+        audio.addEventListener('timeupdate', () => {
+          const percent = (audio.currentTime / audio.duration) * 100;
+          progressFill.style.width = percent + '%';
+          currentTime.textContent = formatTime(audio.currentTime);
+          totalTime.textContent = formatTime(audio.duration);
+        });
+        audio.addEventListener('ended', nextTrack);
+
+        progressBar.addEventListener('click', (e) => {
+          const rect = progressBar.getBoundingClientRect();
+          const x = (e.clientX - rect.left) / rect.width;
+          audio.currentTime = x * audio.duration;
+        });
+
+        function formatTime(seconds) {
+          if (isNaN(seconds) || !isFinite(seconds)) return '0:00';
+          const m = Math.floor(seconds / 60);
+          const s = Math.floor(seconds % 60);
+          return `${m}:${s.toString().padStart(2, '0')}`;
+        }
+
+        if (tracks.length) loadTrack(0);
+        else currentTrackTitle.textContent = 'No tracks found';
+
+      } catch(e) { console.error(e); }
+    });
+  </script>
+</body>
+</html>
