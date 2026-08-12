@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | IESTM</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body class="lang-fa">
+
+  <div id="header-placeholder"></div>
+
+  <section class="section">
+    <div class="container">
+      <div class="about-grid" id="aboutContent"></div>
+    </div>
+  </section>
+
+  <footer class="footer" id="footerContainer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><h3>IESTM</h3><p data-i18n="footer.aboutShort">برند نرم‌افزاری مستقل</p></div>
+        <div class="footer-links"><h4 data-i18n="footer.quickLinks">دسترسی سریع</h4><a href="/" data-i18n="menu.home">خانه</a><a href="about.html" data-i18n="menu.about">درباره ما</a><a href="projects.html" data-i18n="menu.projects">پروژه‌ها</a><a href="contact.html" data-i18n="menu.contact">تماس</a></div>
+        <div class="footer-social"><h4 data-i18n="footer.followUs">ما را دنبال کنید</h4><div class="social-icons"><a href="https://instagram.com/iestm" target="_blank">📸</a><a href="https://t.me/iestm" target="_blank">✈️</a><a href="https://github.com/iestmgit" target="_blank">🐙</a><a href="https://youtube.com/@iestm" target="_blank">▶️</a></div></div>
+      </div>
+      <div class="footer-bottom" data-i18n="footer.copyright">۱۴۰۴ © تمامی حقوق محفوظ است.</div>
+    </div>
+  </footer>
+
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/loader.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      await window.I18N.load();
+      window.I18N.applyLanguage(window.I18N.getLanguage());
+
+      try {
+        const res = await fetch('/website-data.json');
+        const data = await res.json();
+        const lang = window.I18N.getLanguage();
+        const about = data.about[lang] || data.about.en;
+
+        document.getElementById('aboutContent').innerHTML = `
+          <div class="about-text">
+            <h2 data-i18n="about.title">${about.title}</h2>
+            <p>${about.description}</p>
+            <p>${about.mission}</p>
+          </div>
+          <div>
+            <h3 style="font-size:1.4rem; margin-bottom:20px; color:var(--text-primary);">${lang === 'en' ? 'Our Team' : 'تیم ما'}</h3>
+            <div class="team-list">
+              ${about.team.map(m => `
+                <div class="team-member">
+                  <div class="avatar">${m.name.charAt(0)}</div>
+                  <div>
+                    <h4>${m.name}</h4>
+                    <div class="role">${m.role}</div>
+                    <p style="font-size:0.9rem; color:var(--text-secondary); margin-top:6px;">${m.bio}</p>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `;
+      } catch(e) { console.error(e); }
+    });
+  </script>
+</body>
+</html>
