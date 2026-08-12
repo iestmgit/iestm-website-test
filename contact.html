@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | IESTM</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body class="lang-fa">
+
+  <div id="header-placeholder"></div>
+
+  <section class="section">
+    <div class="container">
+      <div class="contact-grid" id="contactContent"></div>
+    </div>
+  </section>
+
+  <footer class="footer" id="footerContainer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><h3>IESTM</h3><p data-i18n="footer.aboutShort">برند نرم‌افزاری مستقل</p></div>
+        <div class="footer-links"><h4 data-i18n="footer.quickLinks">دسترسی سریع</h4><a href="/" data-i18n="menu.home">خانه</a><a href="about.html" data-i18n="menu.about">درباره ما</a><a href="projects.html" data-i18n="menu.projects">پروژه‌ها</a><a href="contact.html" data-i18n="menu.contact">تماس</a></div>
+        <div class="footer-social"><h4 data-i18n="footer.followUs">ما را دنبال کنید</h4><div class="social-icons"><a href="https://instagram.com/iestm" target="_blank">📸</a><a href="https://t.me/iestm" target="_blank">✈️</a><a href="https://github.com/iestmgit" target="_blank">🐙</a><a href="https://youtube.com/@iestm" target="_blank">▶️</a></div></div>
+      </div>
+      <div class="footer-bottom" data-i18n="footer.copyright">۱۴۰۴ © تمامی حقوق محفوظ است.</div>
+    </div>
+  </footer>
+
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/loader.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      await window.I18N.load();
+      window.I18N.applyLanguage(window.I18N.getLanguage());
+
+      try {
+        const res = await fetch('/website-data.json');
+        const data = await res.json();
+        const brand = data.brand;
+        const lang = window.I18N.getLanguage();
+
+        document.getElementById('contactContent').innerHTML = `
+          <div class="contact-info">
+            <h2>${lang === 'en' ? 'Contact' : 'ارتباط با'} <span class="gold">IESTM</span></h2>
+            <p>${lang === 'en' ? 'We are always ready to hear your ideas and collaborate with you.' : 'ما همواره آماده شنیدن ایده‌ها و همکاری با شما هستیم.'}</p>
+            <div class="contact-item"><span class="icon">📧</span> ${brand.email}</div>
+            <div class="contact-item"><span class="icon">📞</span> ${brand.phone}</div>
+            <div class="contact-item"><span class="icon">📍</span> ${lang === 'en' ? brand.address : brand.address_fa}</div>
+            <div style="margin-top:24px; display:flex; gap:12px; flex-wrap:wrap;">
+              ${Object.entries(brand.social).map(([platform, url]) =>
+                `<a href="${url}" target="_blank" style="background:var(--bg-glass); backdrop-filter:var(--glass-backdrop); -webkit-backdrop-filter:var(--glass-backdrop); border:1px solid var(--border-color); color:var(--text-primary); padding:8px 18px; border-radius:50px; font-size:0.85rem;">${platform}</a>`
+              ).join('')}
+            </div>
+          </div>
+          <form class="contact-form" action="#" method="POST">
+            <input type="text" placeholder="${lang === 'en' ? 'Full Name' : 'نام و نام خانوادگی'}" required />
+            <input type="email" placeholder="Email" required />
+            <input type="text" placeholder="${lang === 'en' ? 'Subject' : 'موضوع'}" />
+            <textarea placeholder="${lang === 'en' ? 'Your message...' : 'پیام شما...'}" required></textarea>
+            <button type="submit" class="btn btn-primary" style="width:100%;">${lang === 'en' ? 'Send Message' : 'ارسال پیام'}</button>
+          </form>
+        `;
+      } catch(e) { console.error(e); }
+    });
+  </script>
+</body>
+</html>
